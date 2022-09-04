@@ -14,14 +14,30 @@
     <br><br>
   </div>
 
-  <div class="grid-container">
+  <div id="drop-down-box-grid">
+    <div>
+      <select name="input_lang" id="input-lang-box">
+        <option value="English">English</option>
+        <option value="French">French</option>
+        <option value="Turkish">Turkish</option>
+      </select>
+    </div>
+    <div>
+      <select name="output_lang" id="output-lang-box">
+        <option value="English">English</option>
+        <option value="French">French</option>
+        <option value="Turkish">Turkish</option>
+      </select>
+    </div>
+  </div>
+
+  <div id="user-input-grid">
     <!-- Add language input box on left, output box on right, combo boxes above -->
     <div>
       <input type="text" style="width:500px; height:300px;">
     </div>
     <div>
-      <!-- translate button goes here -->
-      cell
+      <button id="translate-button">Translate</button>
     </div>
     <div>
       <input type="text" style="width:500px; height:300px;">

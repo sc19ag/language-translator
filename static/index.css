@@ -6,11 +6,16 @@ body {
   text-align: center;
 }
 
-.grid-container {
+#drop-down-box-grid {
   display: grid;
-  grid-template-columns: 520px 50px 520px;
+  grid-template-columns: 625px 600px;
 }
 
-.grid-container > div {
+#user-input-grid {
+  display: grid;
+  grid-template-columns: 520px 100px 520px;
+}
+
+#user-input-grid > div {
   padding: 10px;
 }
