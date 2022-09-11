@@ -7,10 +7,11 @@ function translate() {
     };
 
     var jsonInputData = JSON.stringify(inputData);
-    var post = 'POST';
+    console.log('jsonInputData = ' + jsonInputData);
 
     const options = {
-        method: post,
+        content: 'application/json',
+        method: 'POST',
         body: jsonInputData
     };
 
@@ -39,11 +40,13 @@ function translate() {
     js object and write the destination language's text to the output box on the webpage */
 }
 
+/*
 console.log("I am running.");
 
 var src_lang_input_val = document.getElementById('src_lang_input').value;
 if (src_lang_input_val !== undefined && src_lang_input_val !== null) {
     console.log('src_lang_input_val is true');
 }
+*/
 
 console.log("src_lang_input value: " + document.getElementById('src_lang_input').value);

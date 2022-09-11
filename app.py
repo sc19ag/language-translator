@@ -11,9 +11,14 @@ app = fl.Flask(
 def render_html():
     return fl.render_template('index.html')
 
-@app.route("/translate", methods=['POST'])
+@app.route("/translate", methods=['GET', 'POST'])
 def translate_func():
-    data = fl.request.get_json()
+    content_type = fl.request.headers.get('Content-Type')
+    if (content_type == 'application/json'):
+         data = fl.request.get_json()
+    else:
+        return 'Error at /translate: request header is not application/json'
+
 
     # converts full language string of src and dest langs, from client, into one of googletrans's language codes
     if data['srcLang'] == 'English':
