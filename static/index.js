@@ -7,10 +7,12 @@ function translate() {
     };
 
     var jsonInputData = JSON.stringify(inputData);
-    console.log('jsonInputData = ' + jsonInputData);
+    /* console.log('jsonInputData = ' + jsonInputData); */
 
     const options = {
-        content: 'application/json',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         method: 'POST',
         body: jsonInputData
     };
@@ -22,13 +24,10 @@ function translate() {
     
     /* send jsonInputData to /translate resource in flask app via a http POST request, recieve the translated text as json response
      and convert this json response into an object containing the translated text */
-    var translated = {};
-    fetch('/translate', options).then(response => response.json()).then(response => {
-        translated = JSON.parse(response);
+    var promise = fetch('/translate', options).then(response => response.json()).then(translated => {
+        /* display the translated text in the output box on the webpage */
+        document.getElementById('dest_lang_output').innerHTML = translated;
     });
-
-    /* display the translated text in the output box on the webpage */
-    document.getElementById('dest_lang_output').innerHTML = translated;
 
     
     /* save json input data to json file, which is to be stored in ../data directory (relative path to this file) */

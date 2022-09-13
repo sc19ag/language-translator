@@ -7,3 +7,5 @@ translator = Translator()
 # The returned value, translated, will need to converted back to json and saved into a different json file to the input json file from 
 # the js file. 
 # translated = translator.translate(input text, dest lang as string (language code from googletrans required), src lang as string)
+
+<List>

@@ -13,12 +13,20 @@ def render_html():
 
 @app.route("/translate", methods=['GET', 'POST'])
 def translate_func():
+    
     content_type = fl.request.headers.get('Content-Type')
     if (content_type == 'application/json'):
          data = fl.request.get_json()
+         print('content type is application/json')
     else:
+        print('Error at /translate: request header is not application/json')
         return 'Error at /translate: request header is not application/json'
-
+    print()
+    
+    '''
+    data = fl.request.get_json()
+    print(data)
+    '''
 
     # converts full language string of src and dest langs, from client, into one of googletrans's language codes
     if data['srcLang'] == 'English':
@@ -36,9 +44,16 @@ def translate_func():
         data['destLang'] = 'tr'
 
     translator = Translator()
-    translated = translator.translate(data['srcLangText'], data['srcLang'], data['destLang'])
+    translated = translator.translate(data['srcLangText'], data['destLang'], data['srcLang'])
+    print(translated)
 
-    return fl.jsonify(translated)
+    translated_dict = {
+        'text' : translated.text,
+        'srcLang' : translated.src,
+        'destLang' : translated.dest
+    }
+
+    return fl.jsonify(translated_dict)
 
 
 if __name__ == '__main__':
