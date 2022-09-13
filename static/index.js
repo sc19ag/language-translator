@@ -26,7 +26,7 @@ function translate() {
      and convert this json response into an object containing the translated text */
     var promise = fetch('/translate', options).then(response => response.json()).then(translated => {
         /* display the translated text in the output box on the webpage */
-        document.getElementById('dest_lang_output').innerHTML = translated;
+        console.log('translated text = ' + translated.text)
     });
 
     
